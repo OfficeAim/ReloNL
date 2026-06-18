@@ -23,15 +23,23 @@
 - Supabase schema ready to deploy
 
 ### 🎯 Next Priority (Phase 2)
-1. Create Supabase project (use MCP)
-2. Replace `YOUR_GOOGLE_CLIENT_ID` with real client ID
-3. Implement Supabase edge function for log batching
-4. Build Gems feature: Contract Analyzer (Gemini API)
-5. Pilot outreach: TU Eindhoven international office
+1. Replace `YOUR_GOOGLE_CLIENT_ID` with real client ID
+2. Implement Supabase edge function for log batching
+3. Build Gems feature: Contract Analyzer (Gemini API)
+4. Pilot outreach: TU Eindhoven international office
 
 ### ⚠️ Blockers
 - None for Phase 1
-- Phase 2 requires: Google Cloud Console project + Supabase project creation
+- Phase 2 requires: Google Cloud Console project creation (Supabase project already created!)
 
 ---
+### Session: 2026-06-18 (Part 2)
+
+### ✅ Completed
+- Initialized local Git repository
+- Created `.gitignore`
+- Committed Phase 1 files to local git (`ed3cb4a`)
+- Created Supabase project (`relonl`, ref: `tavmoqvxvvcgzlobxhvw`) in `eu-west-1` via MCP
+- Applied `schema.sql` migration to Supabase project
+- **Deployed to Netlify!** Official Production URL: `https://relocate2nl.netlify.app/`
 <!-- Add new sessions below this line -->

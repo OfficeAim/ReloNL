@@ -5,6 +5,42 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ReloNL — The Honest Student Relocation Portal for the Netherlands</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          blue: {
+            50: '#f2f7fc',
+            100: '#e1eef8',
+            200: '#cbe0f2',
+            300: '#a3cae9',
+            400: '#75aedd',
+            500: '#5192d1',
+            600: '#3d77c1',
+            700: '#3260a4',
+            800: '#2b5088',
+            900: '#00478F', // Logo Primary Deep Blue
+            950: '#1b3055',
+          },
+          orange: {
+            50: '#fff9eb',
+            100: '#ffefc6',
+            200: '#ffdc88',
+            300: '#ffc44a',
+            400: '#ffa21b',
+            500: '#FF8C00', // Logo Accent Orange
+            600: '#e66b00',
+            700: '#bf5000',
+            800: '#994108',
+            900: '#7d380b',
+            950: '#431904',
+          }
+        }
+      }
+    }
+  }
+</script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <!-- Google Identity Services — Gems Auth (Phase 2) -->
@@ -54,7 +90,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
     <div class="flex items-center gap-2">
       <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-600 to-emerald-500 flex items-center justify-center text-white font-bold">R</div>
-      <span class="font-bold text-lg">ReloNL</span>
+      <img src="assets/logo.jpg" alt="ReloNL" class="h-10 w-auto object-contain" onerror="this.outerHTML='<span class=\'font-bold text-lg text-blue-900\'>ReloNL</span>'" />
     </div>
     <div class="hidden md:flex items-center gap-5 text-sm font-medium text-gray-700">
       <a href="#dossier" class="hover:text-blue-600">Dossier</a>
@@ -852,7 +888,7 @@
       <div>
         <div class="flex items-center gap-2 mb-3">
           <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-emerald-500 flex items-center justify-center text-white font-bold">R</div>
-          <span class="font-bold text-white text-lg">ReloNL</span>
+          <img src="assets/logo.jpg" alt="ReloNL" class="h-10 w-auto object-contain brightness-0 invert opacity-90" onerror="this.outerHTML='<span class=\'font-bold text-white text-lg\'>ReloNL</span>'" />
         </div>
         <p class="text-sm text-gray-400">The honest student relocation portal for the Netherlands. B2B-funded, never student fees.</p>
       </div>
