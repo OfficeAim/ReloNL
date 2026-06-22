@@ -1,6 +1,6 @@
 # ReloNL — Implementation Status & Architecture Brief
 
-**Live demo:** https://nwrq1tl46hwq.space.minimax.io
+**Live demo:** https://relo2nl.netlify.app
 **File:** `index.html` (single-file, 88 KB, zero backend, zero build step)
 
 ---

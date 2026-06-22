@@ -2,7 +2,7 @@
 
 ## Test Environment
 - **Local file:** `index.html` (88 KB)
-- **Live URL:** https://nwrq1tl46hwq.space.minimax.io
+- **Live demo:** https://relo2nl.netlify.app
 - **Browsers tested:** Chrome 124+, Firefox 125+, Safari 17+ (mobile + desktop)
 
 ---

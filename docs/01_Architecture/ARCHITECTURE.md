@@ -102,7 +102,7 @@ const { data } = useQuery(['rewards', user.id], () =>
 ## Deployment Strategy
 
 ### Phase 1 (now)
-- Single `index.html` → drag-drop to Netlify Drop or `space.minimax.io`
+- Single `index.html` → GitHub push to Netlify (`relo2nl.netlify.app`)
 - Manual updates: edit → re-upload
 
 ### Phase 2 (pilot)

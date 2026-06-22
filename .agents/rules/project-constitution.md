@@ -3,7 +3,7 @@
 ## Identity
 **ReloNL** is a B2B-funded student relocation portal for the Netherlands. Free for students, monetized via university and property manager subscriptions. Never charges students intermediary fees.
 
-**Live demo:** https://nwrq1tl46hwq.space.minimax.io
+**Live demo:** https://relo2nl.netlify.app
 
 ## Architecture
 - **Current:** Single-file `index.html` (88 KB) — Tailwind CSS CDN + Vanilla JS ES6+ + Chart.js + jsPDF + LocalStorage

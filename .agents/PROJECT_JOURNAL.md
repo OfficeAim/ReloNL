@@ -9,7 +9,7 @@
 - Injected `ReloLogger`, `GoogleAuth` boilerplate, and Gems UI section into `index.html`
 - Created `supabase/schema.sql` skeleton
 - Created `supabase/functions/` skeletons (log-events, auth-google)
-- Live demo URL confirmed: https://nwrq1tl46hwq.space.minimax.io
+- Live URL (Production): https://relo2nl.netlify.app
 
 ### 🔑 Decisions Made
 - **New base file:** `index minimax.html` copied to `index.html`
@@ -41,5 +41,5 @@
 - Committed Phase 1 files to local git (`ed3cb4a`)
 - Created Supabase project (`relonl`, ref: `tavmoqvxvvcgzlobxhvw`) in `eu-west-1` via MCP
 - Applied `schema.sql` migration to Supabase project
-- **Deployed to Netlify!** Official Production URL: `https://relocate2nl.netlify.app/`
+- **Deployed to Netlify!** Official Production URL: `https://relo2nl.netlify.app/`
 <!-- Add new sessions below this line -->

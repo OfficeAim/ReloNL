@@ -12,7 +12,7 @@ updated: 2026-06-18
 
 **ReloNL** es una plataforma tecnológica (*prop-tech*) orientada a solucionar la crisis de vivienda para estudiantes internacionales en Países Bajos (kamernood). El enfoque es un modelo B2B donde el estudiante no paga tarifas de intermediación.
 
-🔗 **Live Production URL:** [relocate2nl.netlify.app](https://relocate2nl.netlify.app/)
+🔗 **Live Production URL:** [relo2nl.netlify.app](https://relo2nl.netlify.app/)
 🔗 **Github Repo:** Localizado en `/Movies/OFICEAIM/Relonl`
 
 ---
