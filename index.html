@@ -43,6 +43,7 @@
 </script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <!-- Google Identity Services — Gems Auth (Phase 2) -->
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <style>
@@ -986,6 +987,13 @@ function lsSet(k, v) { try { localStorage.setItem(NS+k, JSON.stringify(v)); } ca
 function uuid() { return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => { const r = Math.random()*16|0, v = c=='x'?r:(r&0x3|0x8); return v.toString(16); }); }
 
 // ============================================================
+// SUPABASE INITIALIZATION
+// ============================================================
+const supabaseUrl = 'https://tavmoqvxvvcgzlobxhvw.supabase.co';
+const supabaseKey = 'sb_publishable_scQvqrOPwab864V_0k3jIA_jWK6MeaB';
+const supabase = window.supabase ? window.supabase.createClient(supabaseUrl, supabaseKey) : null;
+
+// ============================================================
 // RELONL LOGGING SYSTEM v1.0
 // Persists events to localStorage (max 300 entries).
 // Phase 2: replace lsSet with Supabase Edge Function batch call.
@@ -1101,27 +1109,39 @@ aiCountry.addEventListener('change', applyAISettings);
 
 let wizStep = 1;
 function wizDot(n) { return document.querySelector('#wizardDots > div:nth-child('+(n*2-1)+')'); }
-function wizardNext(n) {
-  if (n === 4) {
-    const email = document.getElementById('wizEmail').value;
-    if (!email || !email.includes('@')) { showModal('Email required','Please enter a valid email.'); return; }
-    lsSet('wizard', { country:document.getElementById('wizCountry').value, city:document.getElementById('wizCity').value, duration:document.getElementById('wizDuration').value, email });
-    aiCity.value = document.getElementById('wizCity').value;
-    applyAISettings();
+async function wizardNext(n) {
+  if (n === 4 && supabase) {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (session && session.user && session.user.email) {
+      document.getElementById('wizEmail').value = session.user.email;
+      wizardSubmit();
+      return;
+    }
   }
+
   document.querySelectorAll('.wizard-step').forEach(s => s.classList.add('hidden'));
-  document.getElementById('wizardStep'+n).classList.remove('hidden');
+  const stepEl = document.getElementById('wizardStep'+n);
+  if (stepEl) stepEl.classList.remove('hidden');
   for (let i=1; i<=4; i++) {
     const el = wizDot(i);
-    el.className = 'w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ' + (i < n ? 'step-done' : i === n ? 'step-active' : 'step-pending');
+    if (el) el.className = 'w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ' + (i < n ? 'step-done' : i === n ? 'step-active' : 'step-pending');
   }
   wizStep = n;
 }
 function wizardBack(n) { wizardNext(n); }
 function wizardSubmit() {
-  wizardNext(4);
+  const email = document.getElementById('wizEmail').value;
+  if (!email || !email.includes('@')) { showModal('Email required','Please enter a valid email.'); return; }
+  
+  lsSet('wizard', { country:document.getElementById('wizCountry').value, city:document.getElementById('wizCity').value, duration:document.getElementById('wizDuration').value, email });
+  aiCity.value = document.getElementById('wizCity').value;
+  applyAISettings();
+
   document.querySelectorAll('.wizard-step').forEach(s => s.classList.add('hidden'));
   document.getElementById('wizardDone').classList.remove('hidden');
+  const el4 = wizDot(4);
+  if (el4) el4.className = 'w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold step-done';
+
   ReloLogger.save('onboarding_completed', {
     city: document.getElementById('wizCity').value,
     country: document.getElementById('wizCountry').value,
