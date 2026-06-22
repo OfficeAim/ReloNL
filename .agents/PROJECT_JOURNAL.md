@@ -43,3 +43,18 @@
 - Applied `schema.sql` migration to Supabase project
 - **Deployed to Netlify!** Official Production URL: `https://relo2nl.netlify.app/`
 <!-- Add new sessions below this line -->
+
+### Session: 2026-06-22
+
+### ✅ Completed
+- Unificamos todos los links de documentación y código para que apunten a la URL oficial `relo2nl.netlify.app`.
+- Desvinculamos el repositorio incorrecto y conectamos Netlify a `OfficeAim/ReloNL`.
+- Añadimos las secciones "Scholarships & Financial Aid" (IEFA) y "Full Relocation & Buying" (Dutch Home Hunters) en `index.html`.
+- Actualizamos el link de la municipalidad de Amsterdam al endpoint de "short-stay".
+- Añadimos el SDK de Supabase al frontend (`index.html`).
+- Inicializamos el cliente de Supabase con `tavmoqvxvvcgzlobxhvw.supabase.co` y la Anon Key provista.
+- Refactorizamos la lógica del Onboarding Wizard (arreglando un bug crítico que bloqueaba el paso 4) e implementamos validación silenciosa: si el usuario tiene sesión activa en Supabase, el wizard auto-completa el email y finaliza.
+
+### 🎯 Next Priority (Phase 1B)
+1. Integrar Google Sign-In (GSI) y conectarlo con la Edge Function `auth-google` de Supabase.
+2. Hacer el deploy de las Edge Functions (`log-events` y `auth-google`) a Supabase.
