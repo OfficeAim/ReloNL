@@ -1719,5 +1719,122 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 </script>
+
+<!-- One-Time Welcome Modal -->
+<div id="welcomeModal" class="fixed inset-0 z-50 flex items-center justify-center hidden bg-gray-900/80 backdrop-blur-sm transition-opacity">
+  <div class="bg-gray-900 border border-cyan-500/30 text-white rounded-2xl p-8 max-w-md w-full shadow-2xl relative overflow-hidden">
+    
+    <!-- Step 1 -->
+    <div id="welcomeStep1" class="welcome-step text-center">
+      <div class="text-5xl mb-4">🇳🇱</div>
+      <h2 class="text-2xl font-extrabold mb-3 text-cyan-400">The Honest Student Relocation Portal</h2>
+      <p class="text-gray-300 leading-relaxed text-sm">Moving to the Netherlands is exciting — but the system is brutal. No BSN → No bank account → No lease → No BSN. ReloNL breaks that loop.</p>
+    </div>
+
+    <!-- Step 2 -->
+    <div id="welcomeStep2" class="welcome-step hidden">
+      <div class="text-center text-5xl mb-4">✅</div>
+      <h2 class="text-xl font-extrabold mb-4 text-center text-cyan-400">What you can do here</h2>
+      <ul class="text-gray-300 text-sm space-y-3">
+        <li class="flex items-start gap-2">
+          <span class="text-cyan-400 mt-0.5">✓</span>
+          <span>Verify your solvency before arrival (Tenant Passport)</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-cyan-400 mt-0.5">✓</span>
+          <span>Calculate if your rent is legally capped (WWS / Wet Betaalbare Huur)</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-cyan-400 mt-0.5">✓</span>
+          <span>Detect scam listings with AI before you pay anything</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-cyan-400 mt-0.5">✓</span>
+          <span>Generate a cover letter that landlords actually read</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Step 3 -->
+    <div id="welcomeStep3" class="welcome-step hidden text-center">
+      <div class="text-5xl mb-4">⚠️</div>
+      <h2 class="text-2xl font-extrabold mb-3 text-cyan-400">What ReloNL is NOT</h2>
+      <p class="text-gray-300 leading-relaxed text-sm mb-6">ReloNL does not list apartments, guarantee housing, or provide legal representation. We give you the tools — the decisions are yours.</p>
+    </div>
+
+    <!-- Navigation -->
+    <div class="mt-8 flex items-center justify-between">
+      <button id="welcomePrev" class="text-gray-400 hover:text-white text-sm font-semibold px-3 py-2 invisible transition-colors">← Previous</button>
+      
+      <div class="flex gap-2" id="welcomeDots">
+        <div class="w-2 h-2 rounded-full bg-cyan-400"></div>
+        <div class="w-2 h-2 rounded-full bg-gray-600"></div>
+        <div class="w-2 h-2 rounded-full bg-gray-600"></div>
+      </div>
+
+      <button id="welcomeNext" class="bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-bold py-2 px-5 rounded-lg transition-colors">Next →</button>
+      <button id="welcomeFinish" class="hidden bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-bold py-2 px-5 rounded-lg transition-colors">Got it — Let's go</button>
+    </div>
+  </div>
+</div>
+
+<!-- Floating Help Button -->
+<button id="helpBtn" class="fixed bottom-6 right-6 w-12 h-12 bg-cyan-600 hover:bg-cyan-500 text-white rounded-full shadow-lg flex items-center justify-center text-2xl font-bold z-40 transition-transform hover:scale-105" title="Replay Welcome Tutorial">
+  ?
+</button>
+
+<script>
+  // Welcome Modal Logic
+  const welcomeModal = document.getElementById('welcomeModal');
+  const btnPrev = document.getElementById('welcomePrev');
+  const btnNext = document.getElementById('welcomeNext');
+  const btnFinish = document.getElementById('welcomeFinish');
+  const helpBtn = document.getElementById('helpBtn');
+  const dots = document.getElementById('welcomeDots').children;
+  let currentWelcomeStep = 1;
+
+  function showWelcomeStep(step) {
+    document.querySelectorAll('.welcome-step').forEach(el => el.classList.add('hidden'));
+    document.getElementById('welcomeStep' + step).classList.remove('hidden');
+    
+    // Update dots
+    for (let i = 0; i < 3; i++) {
+      dots[i].className = i + 1 === step ? 'w-2 h-2 rounded-full bg-cyan-400' : 'w-2 h-2 rounded-full bg-gray-600';
+    }
+
+    // Update buttons
+    btnPrev.classList.toggle('invisible', step === 1);
+    
+    if (step === 3) {
+      btnNext.classList.add('hidden');
+      btnFinish.classList.remove('hidden');
+    } else {
+      btnNext.classList.remove('hidden');
+      btnFinish.classList.add('hidden');
+    }
+    currentWelcomeStep = step;
+  }
+
+  btnNext.addEventListener('click', () => showWelcomeStep(currentWelcomeStep + 1));
+  btnPrev.addEventListener('click', () => showWelcomeStep(currentWelcomeStep - 1));
+
+  function openWelcomeModal() {
+    showWelcomeStep(1);
+    welcomeModal.classList.remove('hidden');
+  }
+
+  function closeWelcomeModal() {
+    welcomeModal.classList.add('hidden');
+    localStorage.setItem('relonl_2026_welcome_seen', 'true');
+  }
+
+  btnFinish.addEventListener('click', closeWelcomeModal);
+  helpBtn.addEventListener('click', openWelcomeModal);
+
+  // Auto-show on first visit
+  if (!localStorage.getItem('relonl_2026_welcome_seen')) {
+    openWelcomeModal();
+  }
+</script>
 </body>
 </html>
