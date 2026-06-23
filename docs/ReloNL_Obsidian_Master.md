@@ -66,4 +66,32 @@ La Fase 2 "despierta" el backend y conecta la IA.
 - [ ] Construir la función proxy `ai-gemini` para conectar los features de IA (Contract Analyzer, Legal Coach) cobrando el balance de "Gemas" del usuario.
 
 ---
+
+**NOTA DE CONTINUACIÓN — ReloNL Google Auth**
+
+Paramos aquí hoy. El Google Sign-In está implementado en index.html 
+pero AÚN NO se ha probado ni desplegado.
+
+PRÓXIMA SESIÓN — hacer en este orden:
+
+1. PROBAR en localhost:8080:
+   - Verificar que aparece el botón "Continue with Google" en el hero
+   - Hacer clic y confirmar que redirige a Google
+   - Confirmar que al volver aparece la session bar con foto y email
+   - Confirmar que el autoscroll al wizard funciona
+   - Confirmar que Sign Out funciona
+
+2. Si todo funciona → /lognow y deploy a Netlify
+
+3. PROBLEMA PENDIENTE — cuenta Supabase equivocada:
+   El proyecto Supabase que se está usando es de LinguaEnLinea 
+   (tavmoqvxvvcgzlobxhvw) pero debería estar bajo la cuenta 
+   de ReloNL (rodyf81@gmail.com). 
+   Hay que evaluar si crear un proyecto Supabase nuevo exclusivo 
+   para ReloNL o si dejarlo así por ahora.
+
+4. DESPUÉS del auth funcionando → Fase 2: mejorar el frontend 
+   (visual upgrade del hero, cards, animaciones)
+
+---
 *Relacionados:* [[Supabase Setup]], [[Gemini AI Integration]], [[WWSO Calculator]]

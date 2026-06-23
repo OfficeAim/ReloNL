@@ -58,3 +58,18 @@
 ### 🎯 Next Priority (Phase 1B)
 1. Integrar Google Sign-In (GSI) y conectarlo con la Edge Function `auth-google` de Supabase.
 2. Hacer el deploy de las Edge Functions (`log-events` y `auth-google`) a Supabase.
+
+### Session: 2026-06-23
+
+### ✅ Completed
+- Agregamos un modal de bienvenida de un solo uso (con slideshow de 3 pasos) guardando persistencia en localStorage (`relonl_2026_welcome_seen`).
+- Agregamos botón flotante de ayuda `?`.
+- Añadimos la interfaz y lógica JavaScript de Google Sign-In a través de Supabase Auth:
+  - Botón de "Continue with Google" en el hero.
+  - Barra de sesión superior flotante con foto de perfil y email.
+  - Lógica de auth completa con redirección y autoscroll al wizard.
+
+### 🎯 Next Priority (Next Session)
+1. PROBAR localmente (localhost:8080) el flujo de auth y hacer deploy a Netlify.
+2. Resolver conflicto de cuenta de Supabase (LinguaEnLinea vs ReloNL).
+3. Fase 2: visual upgrade del hero, cards, animaciones.
