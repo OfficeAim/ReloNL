@@ -1004,7 +1004,7 @@ function uuid() { return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,
 // ============================================================
 const supabaseUrl = 'https://tavmoqvxvvcgzlobxhvw.supabase.co';
 const supabaseKey = 'sb_publishable_scQvqrOPwab864V_0k3jIA_jWK6MeaB';
-const supabase = window.supabase ? window.supabase.createClient(supabaseUrl, supabaseKey) : null;
+const supabaseClient = window.supabase ? window.supabase.createClient(supabaseUrl, supabaseKey) : null;
 
 // ============================================================
 // RELONL LOGGING SYSTEM v1.0
@@ -1123,8 +1123,8 @@ aiCountry.addEventListener('change', applyAISettings);
 let wizStep = 1;
 function wizDot(n) { return document.querySelector('#wizardDots > div:nth-child('+(n*2-1)+')'); }
 async function wizardNext(n) {
-  if (n === 4 && supabase) {
-    const { data: { session } } = await supabase.auth.getSession();
+  if (n === 4 && supabaseClient) {
+    const { data: { session } } = await supabaseClient.auth.getSession();
     if (session && session.user && session.user.email) {
       document.getElementById('wizEmail').value = session.user.email;
       wizardSubmit();
@@ -1852,8 +1852,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <script>
   (async function initGoogleAuth() {
-    const sb = window.supabase || null;
-    if (!sb) return;
+    if (!supabaseClient) return;
 
     const sessionBar = document.getElementById('userSessionBar');
     const sessionEmail = document.getElementById('userSessionEmail');
@@ -1877,7 +1876,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // On page load: check session
-    const { data } = await sb.auth.getSession();
+    const { data } = await supabaseClient.auth.getSession();
     updateSessionUI(data.session);
     
     // Check if we just redirected back from sign-in to scroll
@@ -1888,7 +1887,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 500);
     }
 
-    sb.auth.onAuthStateChange((event, session) => {
+    supabaseClient.auth.onAuthStateChange((event, session) => {
       updateSessionUI(session);
       if (event === 'SIGNED_IN' && !window.location.hash.includes('access_token')) {
         const wizard = document.getElementById('dossier');
@@ -1898,7 +1897,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (btnGoogleSignIn) {
       btnGoogleSignIn.addEventListener('click', async () => {
-        await sb.auth.signInWithOAuth({ 
+        await supabaseClient.auth.signInWithOAuth({ 
           provider: 'google',
           options: { redirectTo: window.location.origin }
         });
@@ -1907,7 +1906,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (btnSignOut) {
       btnSignOut.addEventListener('click', async () => {
-        await sb.auth.signOut();
+        await supabaseClient.auth.signOut();
       });
     }
   })();
