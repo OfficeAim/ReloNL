@@ -456,38 +456,6 @@
       </div>
     </div>
 
-    <div class="relonl-card p-6 mt-8">
-      <h3 class="font-bold text-2xl text-center mb-2">🛡️ Stop Worrying. Start Earning.</h3>
-      <p class="text-center text-gray-600 mb-6 text-sm">Badi Plus-style management for landlords</p>
-      <div class="grid md:grid-cols-3 gap-4 mb-6">
-        <div class="text-center p-4 bg-gray-50 rounded-xl">
-          <div class="text-3xl mb-2">⚖️</div>
-          <h4 class="font-bold mb-1">Legal Shield</h4>
-          <p class="text-xs text-gray-600">WWSO compliance, energy label upgrades, municipal registration.</p>
-        </div>
-        <div class="text-center p-4 bg-gray-50 rounded-xl">
-          <div class="text-3xl mb-2">🔧</div>
-          <h4 class="font-bold mb-1">Hassle-Free Management</h4>
-          <p class="text-xs text-gray-600">Cleaning, maintenance, international tenant vetting.</p>
-        </div>
-        <div class="text-center p-4 bg-gray-50 rounded-xl">
-          <div class="text-3xl mb-2">💰</div>
-          <h4 class="font-bold mb-1">Guaranteed Income</h4>
-          <p class="text-xs text-gray-600">Long-term leases, zero vacancy risk.</p>
-        </div>
-      </div>
-      <h4 class="font-bold mb-3">🏠 List Your Property</h4>
-      <div class="grid md:grid-cols-4 gap-3">
-        <input id="lpAddress" class="input-field" placeholder="Property address" />
-        <select id="lpType" class="input-field">
-          <option>Studio</option><option>1-bedroom</option><option>2-bedroom</option><option>Room (kamer)</option>
-        </select>
-        <input id="lpRent" class="input-field" type="number" placeholder="Current rent (€)" />
-        <input id="lpContact" class="input-field" type="email" placeholder="Contact email" />
-      </div>
-      <button class="btn-primary mt-3" onclick="submitLandlord()">Submit Listing</button>
-      <div id="lpStatus" class="hidden mt-3 bg-emerald-50 border border-emerald-200 text-emerald-900 rounded-lg p-3 text-sm"></div>
-    </div>
   </div>
 </section>
 
@@ -780,6 +748,37 @@
       <div id="b2bStatus" class="hidden mt-3 bg-emerald-50 border border-emerald-200 text-emerald-900 rounded-lg p-3 text-sm"></div>
     </div>
   </div>
+    <div class="relonl-card p-6 mt-8">
+      <h3 class="font-bold text-2xl text-center mb-2">🛡️ Verified Tenants. Zero Hassle.</h3>
+      <p class="text-center text-gray-600 mb-6 text-sm">ReloNL pre-screens international students so you don't have to. Solvency verified, documents ready, BSN process guided.</p>
+      <div class="grid md:grid-cols-3 gap-4 mb-6">
+        <div class="text-center p-4 bg-gray-50 rounded-xl">
+          <div class="text-3xl mb-2">✅</div>
+          <h4 class="font-bold mb-1">Verified income & enrollment documents</h4>
+        </div>
+        <div class="text-center p-4 bg-gray-50 rounded-xl">
+          <div class="text-3xl mb-2">✅</div>
+          <h4 class="font-bold mb-1">Tenant Passport with QR</h4>
+          <p class="text-xs text-gray-600">scan to verify instantly</p>
+        </div>
+        <div class="text-center p-4 bg-gray-50 rounded-xl">
+          <div class="text-3xl mb-2">✅</div>
+          <h4 class="font-bold mb-1">Guided through BSN & bank setup</h4>
+          <p class="text-xs text-gray-600">before arrival</p>
+        </div>
+      </div>
+      <h4 class="font-bold mb-3">🏠 List Your Property</h4>
+      <div class="grid md:grid-cols-4 gap-3">
+        <input id="lpAddress" class="input-field" placeholder="Property address" />
+        <select id="lpType" class="input-field">
+          <option>Studio</option><option>1-bedroom</option><option>2-bedroom</option><option>Room (kamer)</option>
+        </select>
+        <input id="lpRent" class="input-field" type="number" placeholder="Current rent (€)" />
+        <input id="lpContact" class="input-field" type="email" placeholder="Contact email" />
+      </div>
+      <button class="btn-primary mt-3" onclick="submitLandlord()">Submit Listing</button>
+      <div id="lpStatus" class="hidden mt-3 bg-emerald-50 border border-emerald-200 text-emerald-900 rounded-lg p-3 text-sm"></div>
+    </div>
 </section>
 
 
@@ -1161,7 +1160,7 @@ function wizardSubmit() {
     country: document.getElementById('wizCountry').value,
     duration: document.getElementById('wizDuration').value
   });
-  showModal('Welcome! 🎉','Your onboarding is complete. Check your email for the personalized checklist.');
+  showModal('Welcome! 🎉','Your onboarding is complete. Your personalized guide is ready below.');
 }
 document.getElementById('navWizardBtn').addEventListener('click', () => {
   document.getElementById('dossier').scrollIntoView({behavior:'smooth'});
